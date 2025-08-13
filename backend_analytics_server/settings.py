@@ -126,3 +126,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 API_URL = 'https://juseperez.pythonanywhere.com/landing/api/index/?format=json'
+
+CSRF_TRUSTED_ORIGINS = [
+  "https://*.app.github.dev", # Solo si utiliza Codespaces
+  "https://localhost:8000",
+  "http://127.0.0.1:8000"
+]
+
+ALLOWED_HOSTS = [
+  "*",
+]
+
+# Fallo: acceso sin autenticación
+LOGIN_URL = '/login/'
+
+# Éxito: luego de autenticación exitosa
+LOGIN_REDIRECT_URL = '/'
