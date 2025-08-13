@@ -47,8 +47,12 @@ def index(request):
     least_common_product = product_counter.most_common()[-1] if product_counter else ("N/A", 0)
     most_common_day = date_counter.most_common(1)[0] if date_counter else ("N/A", 0)
 
-    producto_labels = list(product_counter.keys())
-    producto_valores = list(product_counter.values())
+    # Contar productos usando filas
+    conteo_productos = Counter(f["productID"] for f in filas if f["productID"])
+
+    # Datos para gráfico
+    producto_labels = list(conteo_productos.keys())
+    producto_valores = list(conteo_productos.values())
 
     data = {
         'title': "Landing Page Dashboard",
